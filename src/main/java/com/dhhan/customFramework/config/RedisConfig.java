@@ -11,6 +11,8 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 
 @Configuration
+//@PropertySource("file:${config.path}/redis.properties")
+@PropertySource("classpath:redis.properties")
 public class RedisConfig {
     @Bean
     public RedisConnectionFactory lettuceConnectionFactory(Environment env) {

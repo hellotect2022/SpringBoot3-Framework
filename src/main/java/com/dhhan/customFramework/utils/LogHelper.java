@@ -39,8 +39,7 @@ public class LogHelper {
 
 
         LOGGER.error("Error occurred: {}", e.getMessage());
-        int loop  = e.getStackTrace().length;
-                //> 10 ? 10: e.getStackTrace().length;
+        int loop  = e.getStackTrace().length > 15 ? 15: e.getStackTrace().length;
         for (int i = 0; i < loop; i++) {
             LOGGER.error("-> " + e.getStackTrace()[i]);
         }

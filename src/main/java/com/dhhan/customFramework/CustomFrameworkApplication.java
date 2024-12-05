@@ -7,8 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class CustomFrameworkApplication {
-	@Autowired
-	PubSub pubSub;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CustomFrameworkApplication.class, args);

@@ -59,4 +59,5 @@ public class RedisRepository {
     public Optional<String> get(String key) {
         return get(key, String.class);
     }
+
 }

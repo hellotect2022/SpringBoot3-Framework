@@ -7,7 +7,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -45,6 +47,10 @@ public class RedisRepository {
         redisTemplate.opsForHash().put(key,hashKey,JsonHelper.parseObjectToJson(value));
     }
 
+    public <T> void hsetAll(String key,T value) {
+        redisTemplate.opsForHash().putAll(key,JsonHelper.getINSTANCE().convertValue(value, HashMap.class));
+    }
+
     public <T> Optional<T> hget(String key, String hashKey, Class<T> classType) {
         String jsonData = (String) redisTemplate.opsForHash().get(key,hashKey);
         if (StringUtils.hasText(jsonData)) {
@@ -58,6 +64,10 @@ public class RedisRepository {
     }
     public Optional<String> get(String key) {
         return get(key, String.class);
+    }
+
+    public void sadd(String key, Object... value){
+        redisTemplate.opsForSet().add(key, value);
     }
 
 }
